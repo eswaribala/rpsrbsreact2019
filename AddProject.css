@@ -1,0 +1,16 @@
+legend
+{
+    text-align: center;
+    font-size: large;
+}
+
+fieldset
+{
+    text-align: center;
+}
+
+.project
+{
+    width:25%;
+    margin-left:7%;
+}

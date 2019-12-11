@@ -37,24 +37,17 @@ export class AddProject extends Component
     {
         e.preventDefault();
         console.log(this.state);
-        /*
-        var obj={
-            "userName":this.state.userName,
-            "password":this.state.password
-        }
-        axios.post('http://localhost:5000/login/',obj)
-            .then(res => {
-                //console.log(res.data)
-                //console.log(this.state.userName);
-                //console.log(res.data[0].userName);
-                if(this.state.userName == res.data[0].userName)
-                {
-                    window.location.href="/project?userName="+this.state.userName;
-                }
-                else
-                    window.location.href="/home";
 
-            });*/
+        var obj={
+            "projectId":this.state.projectId,
+            "projectName":this.state.projectName,
+            "location":this.state.location
+        }
+        axios.post('http://localhost:5000/addProject/',obj)
+            .then(res => {
+               console.log(res);
+
+            });
     }
 
     menuView(data, index){
@@ -85,8 +78,8 @@ export class AddProject extends Component
         onChange={this.handle("projectName")}
         />
         </Grid>
-         <Grid>
-        <Select  value={this.state.location}  onChange={this.handle("location")}
+         <Grid item xs={12} sm={12}>
+        <Select id="location" style={{left:2,width:210,top:10}} value={this.state.location} variant="outlined" onChange={this.handle("location")}
         displayEmpty >
         <MenuItem value="">
         <em>None</em>
@@ -95,7 +88,7 @@ export class AddProject extends Component
         </Select>
          </Grid>
         </Grid>
-        <Fab color="primary" aria-label="add" type="submit" >
+        <Fab style={{top:20}} color="primary" aria-label="add" type="submit" >
         <SaveIcon />
         </Fab>
         </fieldset>
